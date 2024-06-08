@@ -12,8 +12,21 @@ form {
   flex-wrap: wrap;
   margin-top: 1%;
 }
+.camps {
+  border-radius: 0.375rem;
+  margin: 0 10px 10px;
+  width: 168px;
+  height: 38px;
+}
 .totalp {
   margin-right: 12%;
+}
+.save-budget {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 25px
 }
 .add, input {
   cursor: pointer;  

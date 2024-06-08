@@ -5,7 +5,7 @@ import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { BudgetsListComponent } from '../budgets-list/budgets-list.component';
-import { Budget, BudgetData, Service } from '../models/budget';
+import { Budget, BudgetData, BudgetInfo, Service } from '../models/budget';
 
 @Component({
   selector: 'app-home',
@@ -45,4 +45,39 @@ export class HomeComponent implements OnInit {
     this.totalCost = this.budgetService.calculateTotalCost(values);
   }
 
+  requestBudget() {
+    const currentDate = new Date();
+    const formattedDate = this.formatDate(currentDate);
+    
+    this.budgetService.saveBudget(
+      this.budgetInfo.value as BudgetInfo,
+      this.budgetForm.value as BudgetData,
+      this.totalCost,
+      formattedDate,
+    );
+    this.budgetForm.reset({
+      seo: false,
+      ads: false,
+      web: false,
+      webPages: 1,
+      webLangs: 1,
+    });
+    this.budgetInfo.reset({
+      name: '',
+      phone: '',
+      email: '',
+    });
+    this.savedBudgets = this.budgetService.getBudgets();
+  }
+
+  formatDate(date: Date): string {
+    return date.toLocaleString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  }
 }

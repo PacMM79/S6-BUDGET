@@ -29,3 +29,37 @@
 <div class="p-5 text-end totalp">
   <h2><b>Preu pressuposat: {{ totalCost }}€</b></h2>
 </div>
+<!-- Formulari pressupost -->
+<section class="save-budget">
+  <div class="card rounded-5 shadow m-3 p-5">
+    <h3><b>Demanar pressupost</b></h3>
+    <p>Omple les següents dades per sol.licitar el teu pressupost. En breu ens possarem en contacte amb tu.</p>
+    <form class="text-center" [formGroup]="budgetInfo">
+      <input type="text" name="firstname" id="firstname" placeholder="Nom" class="camps" required formControlName="name" autocomplete="given-name"/>
+      <input size="2" type="tel"  name="phone" id="phone" placeholder="Telèfon" class="camps" required formControlName="phone" autocomplete="phone"/>
+      <input type="email" name="email" id="email" placeholder="Email" class="camps" required formControlName="email" autocomplete="email"/>
+      <button class="btn btn-success ms-3" type="submit" [disabled]="budgetInfo.invalid || totalCost === 0" (click)="requestBudget()">
+        Sol.licitar pressupost &#x2192;
+      </button>
+    </form>
+    <!-- Validar formulari -->
+    <div class="error-container mt-3 text-center">
+      <div *ngIf="budgetInfo.get('name')?.invalid && budgetInfo.get('name')?.touched" class="error">
+        <div class="alert alert-warning">Nom es requerit.</div>
+      </div>
+      <div *ngIf="budgetInfo.get('phone')?.invalid && budgetInfo.get('phone')?.touched" class="error">
+        <div class="alert alert-warning">Telefon es requerit, ha de ser numeric i sense espais.</div>
+      </div>
+      <div *ngIf="budgetInfo.get('email')?.invalid && budgetInfo.get('email')?.touched" class="error">
+        <div class="alert alert-warning">Email valid es requerit.</div>
+      </div>
+      <div *ngIf="totalCost === 0" class="error">
+        <div class="alert alert-warning">Si us plau afageix un servei al pressupost.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <!-- Llistat pressupostos -->
+  <app-budgets-list></app-budgets-list>
+</section>

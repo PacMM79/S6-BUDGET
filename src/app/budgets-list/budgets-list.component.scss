@@ -1,0 +1,30 @@
+.budget-list {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 25px 0 100px;
+}
+.card {
+    width: 70%;
+}
+.card:hover {
+    border-color: green;
+}
+.curs {
+    width: 100%;
+}
+hr {
+    border-top: 5px dashed green;
+    width: 75%;
+    margin: auto;
+}
+form {
+    margin-top: 25px;
+}
+button {
+    border: 0px;
+    background-color: transparent;
+}
+input {
+    border-radius: 0.375rem;
+}

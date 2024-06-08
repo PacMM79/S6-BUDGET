@@ -1,1 +1,74 @@
-<p>budgets-list works!</p>
+<hr>
+<!-- Filtres pressupostos -->
+<div class="budget-list">
+  <div class="card rounded-5 shadow m-3 p-5">
+    <div>
+      <h2><b>Pressupostos en curs</b></h2>
+    </div>
+    <div class="text-end">
+      <input type="text" placeholder="Filtrar per nom" id="search" autocomplete="name" #filter />
+      <button type="button" (click)="filterResults(filter.value)">
+        <i class="bi bi-search"></i>
+      </button>
+      <button (click)="orderByName()">
+        Nom
+        <i *ngIf="isNameAscending === true" class="bi bi-caret-down"></i>
+        <i *ngIf="isNameAscending === false" class="bi bi-caret-up"></i>
+      </button>
+      <button (click)="orderByPrice()">
+        Import
+        <i *ngIf="isPriceAscending === true" class="bi bi-caret-down"></i>
+        <i *ngIf="isPriceAscending === false" class="bi bi-caret-up"></i>
+      </button>
+      <button (click)="orderByDate()">
+        Data
+        <i *ngIf="isDateAscending === true" class="bi bi-caret-down"></i>
+        <i *ngIf="isDateAscending === false" class="bi bi-caret-up"></i>
+      </button>
+    </div>
+    <!-- Resultats pressupostos -->
+    <div class="mt-5 text-center" *ngIf="filteredBudgets.length === 0">
+      <p>No hi han pressupostos disponibles...</p>
+    </div>
+    <div *ngIf="savedBudgets.length > 0">
+      @for (budget of filteredBudgets; track $index) {
+      <div class="card curs shadow p-4 mt-3">
+        <div class="row">
+          <div class="col-lg-4 col-md-12">
+            <h4 class="font-weight-bold">{{ budget.budgetInfo.name }}</h4>
+            <p>{{ budget.budgetInfo.email }}<br>
+            {{ budget.budgetInfo.phone }}</p>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <h6>Serveis escollits:</h6>
+            <ul>
+              @for (service of services; track $index) {
+              <li *ngIf="service.name === 'seo' && budget.budgetData.seo">
+                {{ service.label }}
+              </li>
+              <li *ngIf="service.name === 'ads' && budget.budgetData.ads">
+                {{ service.label }}
+              </li>
+              <li *ngIf="service.name === 'web' && budget.budgetData.web">
+                {{ service.label }}
+                <span>
+                  ({{ budget.budgetData.webPages }} pàgines,
+                  {{ budget.budgetData.webLangs }} llenguatges)
+                </span>
+              </li>
+              }
+              <li>
+                <span><p>Data de creació: {{ budget.budgetDate }}</p></span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-12">
+            <h4>Total:</h4>
+            <span class="costnum"><h4><b>{{ budget.totalCost }}€</b></h4></span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
