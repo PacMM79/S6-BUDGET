@@ -17,6 +17,11 @@
         </label>
       </div>
     </div>
+    <!-- Panel Extras -->
+    <app-panel *ngIf="service.name === 'web' && budgetForm.get('web')?.value"
+      [pagesControl]="$any(budgetForm.get('webPages'))"
+      [langsControl]="$any(budgetForm.get('webLangs'))">
+    </app-panel>
   </div>
   }
 </form>

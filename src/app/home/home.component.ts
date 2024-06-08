@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { BudgetsListComponent } from '../budgets-list/budgets-list.component';
@@ -9,7 +10,7 @@ import { Budget, BudgetData, Service } from '../models/budget';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule, WelcomeComponent, BudgetsListComponent ],
+  imports: [ ReactiveFormsModule, CommonModule, WelcomeComponent, BudgetsListComponent, PanelComponent ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -1,1 +1,42 @@
-<p>panel works!</p>
+<section class="d-flex flex-column align-items-end gap-3">
+  <!-- Modal extra pàgines -->
+  <div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#modal1"><i class="bi bi-info-circle"></i></button>
+      <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-5">
+              <h2 class="text-center"><b>Número de pàgines</b></h2>
+              <h4 class="text-center">Afageix el número de pàgines que tindrà el teu projecte.<br> El cost de cada pàgina es de 30€.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Butons afegir pàgines -->
+      <label for="webPages">Número de pàgines:</label>
+      <button type="button" (click)="decrement(pagesControl)"><i class="bi bi-dash-circle"></i></button>
+      <input id="webPages" type="number" [formControl]="pagesControl" min="1" readonly>
+      <button type="button" (click)="increment(pagesControl)"><i class="bi bi-plus-circle"></i></button>
+  </div>
+  <!-- Modal extra llenguatges -->
+  <div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#modal2"><i class="bi bi-info-circle"></i></button>
+      <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-5">
+              <h2 class="text-center"><b>Número de llenguatges</b></h2>
+              <h4 class="text-center">Afageix els llenguatges que tindrà el teu projecte.<br> El cost de cada llenguatge es de 30€.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Butons afegir llenguatges -->
+      <label for="webLangs">Número de llenguatges:</label>
+      <button type="button" (click)="decrement(langsControl)"><i class="bi bi-dash-circle"></i></button>
+      <input id="webLangs" type="number" [formControl]="langsControl" min="1" readonly>
+      <button type="button" (click)="increment(langsControl)"><i class="bi bi-plus-circle"></i></button>
+  </div>
+</section>
