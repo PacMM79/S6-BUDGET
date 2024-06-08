@@ -41,6 +41,8 @@
       <button class="btn btn-success ms-3" type="submit" [disabled]="budgetInfo.invalid || totalCost === 0" (click)="requestBudget()">
         Sol.licitar pressupost &#x2192;
       </button>
+      <button class="btn btn-primary mt-3 ms-3" (click)="getShareUrl()">Compartir pressupost <i class="bi bi-share"></i>
+      </button>
     </form>
     <!-- Validar formulari -->
     <div class="error-container mt-3 text-center">
