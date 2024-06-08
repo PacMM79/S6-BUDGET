@@ -1,1 +1,26 @@
-<p>home works!</p>
+<!-- Panel Serveis -->
+<form [formGroup]="budgetForm">
+  @for (service of services; track service.name) {
+  <div class="card shadow m-3 p-5 rounded-5 fw-bold">
+    <div class="row align-items-center">
+      <div class="col-sm-6">
+        <h3><b>{{ service.label }}</b></h3>
+        <p>{{ service.description }}</p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h2 class="price"><b>{{ service.price }}€</b></h2>
+      </div>
+      <div class="col-sm-2 text-center">
+        <label [for]="service.name" class="add">
+          <input id="{{ service.name }}" type="checkbox" [formControlName]="service.name"/>
+          Afegir
+        </label>
+      </div>
+    </div>
+  </div>
+  }
+</form>
+<!-- Preu pressupost -->
+<div class="p-5 text-end totalp">
+  <h2><b>Preu pressuposat: {{ totalCost }}€</b></h2>
+</div>

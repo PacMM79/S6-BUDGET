@@ -1,0 +1,20 @@
+.card {
+  width: 70%;
+}
+.card:hover {
+  border-color: green;
+}
+form {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 1%;
+}
+.totalp {
+  margin-right: 12%;
+}
+.add, input {
+  cursor: pointer;  
+}

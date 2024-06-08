@@ -1,0 +1,23 @@
+.logo {
+    background-image: url("/assets/logo3.png");
+    background-size: cover;
+    background-position: center;
+    width: 20vw;
+    height: 5vw;
+    margin-left: 12%;
+    margin-bottom: 1%;
+}
+.header {
+    margin: auto;
+    width: 80%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/assets/low-poly-grid-haikei.svg");
+    background-size: cover;
+    background-position: center;
+}
+h1 {
+    font-size: 4vw;
+}
