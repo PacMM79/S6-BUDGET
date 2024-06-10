@@ -15,6 +15,28 @@ Coneixements previs:
 - Signals
 - Comunicació entre Fill-Pare
 
+## Instal.lació
+
+- Clona el repositori.
+
+```
+$ git clone https://github.com/PacMM79/S6-BUDGET.git
+
+```
+
+- Executa **npm i** per instal.lar totes les dependencies.
+
+```
+npm i
+  
+````
+
+- Executa **ng serve** per construir el projecte de Angular e iniciar el servidor localment.
+
+```
+ng serve
+  
+````
 
 ## Development server
 
