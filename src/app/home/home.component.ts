@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   budgetInfo = new FormGroup({
     name: new FormControl('', Validators.required),
-    phone: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(9)]),
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
     this.budgetForm.valueChanges.subscribe((values) => {
       this.calculateCost(values as Partial<BudgetData>);
     });
+
     this.activatedRoute.queryParams.subscribe(params => {
       (Object.keys(params) as (keyof BudgetData)[]).forEach(key => {
         if (key in this.budgetForm.controls) {
@@ -59,6 +60,25 @@ export class HomeComponent implements OnInit {
         }
       });
     });
+
+    this.budgetForm.get('web')?.valueChanges.subscribe(value => {
+      if (!value) {
+        this.budgetForm.get('webPages')?.setValue(null);
+        this.budgetForm.get('webLangs')?.setValue(null);
+        this.budgetForm.get('webPages')?.disable();
+        this.budgetForm.get('webLangs')?.disable();
+      } else {
+        this.budgetForm.get('webPages')?.enable();
+        this.budgetForm.get('webLangs')?.enable();
+        this.budgetForm.get('webPages')?.setValue(1);
+        this.budgetForm.get('webLangs')?.setValue(1);
+      }
+    });
+
+    if (!this.budgetForm.get('web')?.value) {
+      this.budgetForm.get('webPages')?.disable();
+      this.budgetForm.get('webLangs')?.disable();
+    }
   }
 
   calculateCost(values: Partial<BudgetData>) {
@@ -68,7 +88,7 @@ export class HomeComponent implements OnInit {
   requestBudget() {
     const currentDate = new Date();
     const formattedDate = this.formatDate(currentDate);
-    
+
     this.budgetService.saveBudget(
       this.budgetInfo.value as BudgetInfo,
       this.budgetForm.value as BudgetData,

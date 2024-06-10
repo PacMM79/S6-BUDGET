@@ -36,7 +36,7 @@
     <p>Omple les següents dades per sol.licitar el teu pressupost. En breu ens possarem en contacte amb tu.</p>
     <form class="text-center" [formGroup]="budgetInfo">
       <input type="text" name="firstname" id="firstname" placeholder="Nom" class="camps" required formControlName="name" autocomplete="given-name"/>
-      <input size="2" type="tel"  name="phone" id="phone" placeholder="Telèfon" class="camps" required formControlName="phone" autocomplete="phone"/>
+      <input type="tel"  name="phone" id="phone" placeholder="Telèfon" class="camps" required formControlName="phone" autocomplete="phone"/>
       <input type="email" name="email" id="email" placeholder="Email" class="camps" required formControlName="email" autocomplete="email"/>
       <button class="btn btn-success ms-3" type="submit" [disabled]="budgetInfo.invalid || totalCost === 0" (click)="requestBudget()">
         Sol.licitar pressupost &#x2192;
